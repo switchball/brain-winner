@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1= question
+  each val in options.split(',')
+    h2= val + ((val==correct && val!="")?" [正确答案]": "")
+  pre= correct
+  pre Page auto refresh enabled.
+  if options
+    iframe(src='https://www.baidu.com/s?wd='+question)
+  else
+    pre just wait ...
+  script(type='text/javascript', src='/javascripts/jquery.min.js')
+  script.
+    var question = '#{question}';
+    var cnt = 0;
+    function fetch()
+    {
+      //window.location.reload();
+      console.log('fetch start...');
+      cnt += 1;
+      $.get({
+        url: '/users/detail/#{uid}',
+        dataType: 'json',
+        success: function(data) {
+          new_question = data['question'];
+          console.log(question + " -> " + new_question);
+          code = data['code'];
+          if (question != new_question) {
+            cnt = 0;
+            location.href = location.href;
+          } else {
+            console.log('keep going...');
+          }
+        }
+      });
+      if (cnt < 300) {
+        setTimeout('fetch()', 1000); //指定1秒刷新一次
+      } else {
+        $('pre').text('请重新刷新页面');
+      }
+    }
+    fetch();

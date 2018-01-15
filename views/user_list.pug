@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 当前活跃用户列表
+  ul
+  each key in Object.keys(users)
+    li= "uid: "
+      a(href='/users/' + key)
+        span= key
+      span= " nickname: " + users[key]
+  pre 若昵称未显示，请连上代理后重新登陆，再刷新页面即可。
+    a(href='/') 返回上一级
