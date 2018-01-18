@@ -23,3 +23,6 @@ The project contains two servers, one is the proxy and the other is the web serv
 - First, the client should connect via proxy `ip_addr:8001` 
 - Second, the client should open `http://ip_addr:8000` and follow the guide
 
+## Demo
+
+- Visit [the website](https://106.14.11.182:8000) to see the demo.
