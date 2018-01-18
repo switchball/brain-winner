@@ -25,4 +25,4 @@ The project contains two servers, one is the proxy and the other is the web serv
 
 ## Demo
 
-- Visit [the website](https://106.14.11.182:8000) to see the demo.
+- Visit [the website](http://106.14.11.182:8000) to see the demo.
