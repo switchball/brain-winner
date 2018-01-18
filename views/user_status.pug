@@ -3,9 +3,8 @@ extends layout
 block content
   h1= question
   each val in options.split(',')
-    h2= val + ((val==correct && val!="")?" [正确答案]": "")
+    h3= val + ((val==correct && val!="")?" [正确答案]": "")
   pre= correct
-  pre Page auto refresh enabled.
   if options
     iframe(src='https://www.baidu.com/s?wd='+question)
   else
@@ -13,6 +12,7 @@ block content
   script(type='text/javascript', src='/javascripts/jquery.min.js')
   script.
     var question = '#{question}';
+    var correct = '#{correct}';
     var cnt = 0;
     function fetch()
     {
@@ -24,9 +24,10 @@ block content
         dataType: 'json',
         success: function(data) {
           new_question = data['question'];
+          new_correct = data['correct'];
           console.log(question + " -> " + new_question);
           code = data['code'];
-          if (question != new_question) {
+          if (question != new_question || correct != new_correct) {
             cnt = 0;
             location.href = location.href;
           } else {

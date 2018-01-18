@@ -124,21 +124,21 @@ module.exports = {
         uid = data['uid'];
         nick = data['userInfo']['nickName'];
         binding(uid, nick);
-      } else if (requestDetail.url.includes('question.hortor.net/question/fight/match')) {
+      } else if (requestDetail.url.includes('question.hortor.net/question/bat/match')) {
         request = split_params('?' + requestDetail.requestData.toString());
         const newResponse = responseDetail.response;
         intercept('match_start', request["uid"], JSON.parse(newResponse.body)["data"]);
-      } else if (requestDetail.url.includes('question.hortor.net/question/fight/findQuiz')) {
+      } else if (requestDetail.url.includes('question.hortor.net/question/bat/findQuiz')) {
         request = split_params('?' + requestDetail.requestData.toString());
 
         const newResponse = responseDetail.response;
         intercept('quiz', request["uid"], JSON.parse(newResponse.body)["data"]);
-      } else if (requestDetail.url.includes('question.hortor.net/question/fight/choose')) {
+      } else if (requestDetail.url.includes('question.hortor.net/question/bat/choose')) {
         request = split_params('?' + requestDetail.requestData.toString());
 
         const newResponse = responseDetail.response;
         intercept('choose', request["uid"], JSON.parse(newResponse.body)["data"]);
-      } else if (requestDetail.url.includes('question.hortor.net/question/fight/fightResult')) {
+      } else if (requestDetail.url.includes('question.hortor.net/question/bat/fightResult')) {
         request = split_params('?' + requestDetail.requestData.toString());
 
         const newResponse = responseDetail.response;

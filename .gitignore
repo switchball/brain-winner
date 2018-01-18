@@ -5,4 +5,5 @@ node_modules/
 user/
 
 # Data
+all.txt
 all_backup.txt
